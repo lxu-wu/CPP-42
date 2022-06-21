@@ -1,10 +1,11 @@
-NAME = megaphone
+NAME = weapon
 
-SRCS = megaphone.cpp
+SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+
 OBJ = ${SRCS:.cpp=.o}
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 CC = g++
 
 all:	${NAME}
@@ -18,6 +19,6 @@ clean:
 fclean:	clean
 		${RM} ${NAME}
 
-re:	fclean all
+re: fclean all
 
 .PHONY:	re fclean clean all	

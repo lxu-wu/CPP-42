@@ -1,6 +1,6 @@
 NAME = phonebook
 
-SRCS = Contact.class.cpp PhoneBook.class.cpp main.cpp
+SRCS = Contact.cpp PhoneBook.cpp main.cpp
 
 OBJ = ${SRCS:.cpp=.o}
 
@@ -19,7 +19,6 @@ clean:
 fclean:	clean
 		${RM} ${NAME}
 
-re:
-	fclean all
+re: fclean all
 
 .PHONY:	re fclean clean all	

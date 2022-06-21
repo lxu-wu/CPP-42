@@ -1,4 +1,4 @@
-#include "PhoneBook.class.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(): _count(0), _index(0)
 {
