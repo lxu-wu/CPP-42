@@ -9,6 +9,8 @@ public:
 
 	Fixed();
 	Fixed(Fixed const &src);
+	Fixed(int const nb);
+	Fixed(float const nb);
 	~Fixed();
 
 	Fixed & operator=(Fixed const & rhs);
@@ -17,10 +19,14 @@ public:
 
 	void setRawBits( int const raw );
 
+	float toFloat( void ) const;
+	int toInt( void ) const;
+
 private:
 	static int const _decimal_bits = 8;
 	int	_raw;
 };
 
+std::ostream& operator<<(std::ostream & o, Fixed const & i);
 
 #endif
