@@ -17,12 +17,12 @@ Fixed::Fixed(Fixed const & src)
 	*this = src;
 }
 
-Fixed::Fixed(int const nb): _raw(nb * 256)
+Fixed::Fixed(int const nb): _raw(nb * (1 << Fixed::_nBits))
 {
 	// std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(float const nb): _raw(roundf(nb * 256))
+Fixed::Fixed(float const nb): _raw(roundf(nb * (1 << Fixed::_nBits)))
 {
 	// std::cout << "Float constructor called" << std::endl;
 }
@@ -47,14 +47,20 @@ int Fixed::getRawBits() const
 	return (this->_raw);
 }
 
+int Fixed::getNBits() const
+{
+	// std::cout << "getNBits member function called" << std::endl;
+	return (this->_raw);
+}
+
 float Fixed::toFloat( void ) const
 {
-	return ((float)this->_raw / 256);
+	return ((float)this->_raw / (1 << Fixed::_nBits));
 }
 
 int Fixed::toInt( void ) const
 {
-	return (this->_raw / 256);
+	return (this->_raw / (1 << Fixed::_nBits));
 }
 
 std::ostream& operator<<(std::ostream & o, Fixed const & i)
@@ -119,7 +125,7 @@ Fixed Fixed::operator*(Fixed const & rhs)
 {
 	Fixed multiply;
 
-	multiply.setRawBits(this->_raw * rhs.getRawBits() / 256);
+	multiply.setRawBits(this->_raw * rhs.getRawBits() / (1 << Fixed::_nBits));
 	return (multiply);
 }
 
@@ -127,7 +133,8 @@ Fixed Fixed::operator/(Fixed const & rhs)
 {
 	Fixed divide;
 
-	divide.setRawBits(this->_raw * 256 / rhs.getRawBits());
+	// std::cout << this->toFloat() << "   " << rhs.toFloat() << std::endl;
+	divide.setRawBits(this->_raw * (1 << Fixed::_nBits) / (rhs.getRawBits()));
 	return (divide);
 
 }

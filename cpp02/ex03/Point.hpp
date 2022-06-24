@@ -8,26 +8,20 @@ class Point
 private:
 	Fixed const _x;
 	Fixed const _y;
-	Fixed const _m;
-	Fixed const _p;
+	Point();
+	Point & operator=(Point const & rhs);
 	
 public:
-	Point();
 	Point(Fixed const x, Fixed const y);
 	Point(Point const & rhs);
 	~Point();
 
-	Point & operator=(Point const & rhs);
+	Fixed getX() const;
+	Fixed getY() const;
+
 };
 
-Point::Point(/* args */)
-{
-}
-
-Point::~Point()
-{
-}
-
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
 
