@@ -7,6 +7,9 @@ int main( void )
 	Point c(100, 0);
 	Point point(1, 1);
 
-	std::cout << bsp(Point(a), Point(b), Point(c), Point(point)) << std::endl;
+	if (bsp(Point(a), Point(b), Point(c), Point(point)))
+		std::cout << "point is in the triangle a,b,c" << std::endl;
+	else
+		std::cout << "point is out the triangle a,b,c" << std::endl;
 	return 0;
 }
