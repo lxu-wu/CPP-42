@@ -49,7 +49,7 @@ public:
 	static Fixed max(Fixed const f1, Fixed const f2);
 
 private:
-	static int const _decimal_bits = 8;
+	static int const _nBits = 8;
 	int	_raw;
 };
 
