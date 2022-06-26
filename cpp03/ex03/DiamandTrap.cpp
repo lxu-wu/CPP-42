@@ -43,5 +43,15 @@ void DiamandTrap::attack(const std::string& target)
 
 void DiamandTrap::whoAmI()
 {
-	std::cout << "I am " << this->_name << " " << ClapTrap::_name << std::endl;
+}
+{
+	if (this->_hitPoints && this->_energyPoints)
+	{
+		std::cout << "I am " << this->_name << " " << ClapTrap::_name << std::endl;
+		this->_energyPoints--;
+	}
+	else if (this->_hitPoints == 0)
+		std::cout << this->_name << this->_name << " can't speak, has 0 hit point, is died." << std::endl;
+	else
+		std::cout << "ScavTrap " << this->_name << " can't speak, has 0 energy point, is tired." << std::endl;
 }

@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
@@ -56,7 +57,7 @@ int main()
 	claptrap3.attack("Banana");
 	}
 	{
-		std::cout << "----- New Test ------" << std::endl << std::endl;
+		std::cout << "----- ScavTrap Test ------" << std::endl << std::endl;
 		ScavTrap a("Scav");
 		ScavTrap b(a);
 
@@ -88,6 +89,19 @@ int main()
 		c.guardGate();
 
 	}
-
-
+	{
+	
+	FragTrap a("Me");
+	ClapTrap b("Ally");
+	
+	a.attack("Enemy");
+	b.attack("Enemy");
+	a.takeDamage(99);
+	a.beRepaired(1);
+	a.highFivesGuys();
+	a.attack("Enemy");
+	a.takeDamage(2);
+	a.beRepaired(1);
+	a.highFivesGuys();
+	}
 }

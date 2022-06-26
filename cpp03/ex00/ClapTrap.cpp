@@ -1,10 +1,13 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() {}
+ClapTrap::ClapTrap(): _hitPoints(10), _energyPoints(10), _attackDamage(0), _name("unnamed")
+{
+	std::cout << "Default constructor called" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name): _hitPoints(10), _energyPoints(10), _attackDamage(0), _name(name)
 {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "Name constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & rhs)
@@ -58,7 +61,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hitPoints && this->_energyPoints)
 	{
-		std::cout << "ClapTrap " << this->_name << " has repaired " << amount << "hit points!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " has repaired " << amount << " hit points!" << std::endl;
 		this->_hitPoints += amount;
 		this->_energyPoints--;
 	}
