@@ -3,7 +3,7 @@
 
 # include "AMateria.hpp"
 
-class Cure
+class Cure : public AMateria
 {
 public:
 
@@ -13,8 +13,9 @@ public:
 
 	Cure & operator=(Cure const & src);
 
-private:
-	/* data */
+	AMateria* clone() const;
+	void use(ICharacter& target);
+
 };
 
 #endif

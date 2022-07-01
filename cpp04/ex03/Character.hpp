@@ -7,7 +7,8 @@ class Character : public ICharacter
 {
 public:
 
-	Character(/* args */);
+	Character();
+	Character(std::string const & name);
 	Character(Character const & src);
 	~Character();
 
@@ -18,9 +19,12 @@ public:
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);
 
-private:
-	/* data */
+	// static void * getItemPtr(Character * target, int idx);
 
+private:
+	
+	std::string _name;
+	AMateria* _items[4];
 };
 
 
