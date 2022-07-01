@@ -56,9 +56,9 @@ int main()
 		me->use(1, *bob);
 		me->use(2, *bob);
 
-		tmp = src->createMateria("cure");
+		tmp = src->createMateria("ice");
 		me->equip(tmp);
-		me->use(2, *bob);		
+		me->use(0, *bob);		
 
 		delete bob;
 		delete me;

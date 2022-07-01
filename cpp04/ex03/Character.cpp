@@ -5,6 +5,8 @@ Character::Character() : _name("Unnamed")
 	// std::cout << "Character default constructor called" << std::endl;
 	for(int i = 0; i < 4; i++)
 		this->_items[i] = 0;
+	for (int i = 0;i < 128; i++)
+		this->_dropped[i] = 0;
 }
 
 Character::Character(std::string const & name) : _name(name)
@@ -12,6 +14,8 @@ Character::Character(std::string const & name) : _name(name)
 	// std::cout << "Character name constructor called" << std::endl;
 	for(int i = 0; i < 4; i++)
 		this->_items[i] = 0;
+	for (int i = 0;i < 128; i++)
+		this->_dropped[i] = 0;
 }
 
 Character::Character(Character const & src) : _name(src._name)
@@ -27,6 +31,12 @@ Character::~Character()
 	for(int i = 0;i < 4; i++)
 		if (this->_items[i])
 			delete this->_items[i];
+	for (int i = 0;i < 128; i++)
+	{
+		if (this->_dropped[i] != 0)
+			break ;
+		delete this->_dropped[i];
+	}
 }
 
 Character & Character::operator=(Character const & src)
@@ -80,6 +90,22 @@ void Character::unequip(int idx)
 	
 	if (this->_items[idx])
 	{
+
+		for(int i = 0; i < 128; i++)
+		{
+			if (this->_dropped[i] == 0)
+			{
+				this->_dropped[i] = this->_items[idx];
+				break ;
+			}
+			if (i == 127)
+			{
+				std::cout << "Can't unequip no space in program" << std::endl;
+				return ;
+			}
+		}
+
+
 		std::cout << this->_items[idx]->getType() << " at index: " << idx;
 		this->_items[idx] = 0;
 		std::cout << " unequiped" << std::endl;
@@ -91,7 +117,7 @@ void Character::unequip(int idx)
 void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 4 && idx >= 0 && this->_items[idx])
-		 this->_items[idx]->use(target);
+		this->_items[idx]->use(target);
 	else if (this->_items[idx])
 		std::cout << "No materia to use" << std::endl;
 	else

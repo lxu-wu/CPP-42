@@ -25,6 +25,7 @@ private:
 	
 	std::string _name;
 	AMateria* _items[4];
+	AMateria* _dropped[128];
 };
 
 
