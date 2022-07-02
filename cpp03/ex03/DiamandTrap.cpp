@@ -4,7 +4,7 @@ DiamandTrap::DiamandTrap()
 	std::cout << "DiamandTrap default constructor called" << std::endl;
 }
 
-DiamandTrap::DiamandTrap(std::string name):
+DiamandTrap::DiamandTrap(std::string name)
 {
 	std::cout << "DiamandTrap name constructor called" << std::endl;
 	this->ClapTrap::_name = name + "_trap_name";
@@ -40,8 +40,6 @@ void DiamandTrap::attack(const std::string& target)
 }
 
 void DiamandTrap::whoAmI()
-{
-}
 {
 	if (this->_hitPoints && this->_energyPoints)
 	{
