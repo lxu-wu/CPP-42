@@ -64,3 +64,11 @@ void Form::beSigned(Bureaucrat const & i)
 		this->_signed = 1;
 
 }
+
+void Form::execute(Bureaucrat const & executor) const
+{
+	if (this->_signed == false)
+		throw FormNoSignedException();
+	if (executor.getGrade() > this->_execGrade)
+		throw GradeTooLowException();
+}
