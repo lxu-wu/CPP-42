@@ -36,6 +36,7 @@ Scalaire::Scalaire(std::string const & str) : _str(str)
 	}
 	else
 	{
+		_type = 0;
 		throw Impossible();
 	}
 }
@@ -69,7 +70,7 @@ bool Scalaire::_isChar() const
 {
 	if (this->_str[0])
 	{
-		if (this->_str.length() > 1 || this->_str[0] <= '9' || this->_str[0] >= '0')
+		if (this->_str.length() > 1 || (this->_str[0] <= '9' && this->_str[0] >= '0'))
 			return false;
 		return true;
 	}
