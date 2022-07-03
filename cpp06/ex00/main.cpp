@@ -15,7 +15,8 @@ int main(int argc, char **argv)
 		try
 		{
 			std::cout << "char: ";
-			std::cout << sc.getChar() << std::endl;
+			sc.getChar();
+			std::cout << "'" << sc.getChar() << "'" << std::endl;
 		}
 		catch(const std::exception& e)
 		{
