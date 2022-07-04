@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+int const Fixed::_nBits = 8;
+
 Fixed::Fixed(): _raw(0)
 {
 	std::cout << "default constructor called" << std::endl;

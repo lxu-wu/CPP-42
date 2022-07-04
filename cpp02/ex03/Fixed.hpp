@@ -50,7 +50,7 @@ public:
 	static Fixed max(Fixed const f1, Fixed const f2);
 
 private:
-	static int const _nBits = 8;
+	static int const _nBits;
 	int	_raw;
 };
 
