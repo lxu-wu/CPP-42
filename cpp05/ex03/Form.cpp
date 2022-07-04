@@ -52,6 +52,7 @@ bool Form::getSign() const
 
 std::ostream & operator<<(std::ostream & o, Form const & i)
 {
+	o << std::boolalpha;
 	o << "Form name: " << i.getName() << ", signed: " << i.getSign() << ", require grade:" << i.getSignGrade() << " to sign and require grade:" << i.getExecGrade() << " to execute.";
 	return o;
 }
