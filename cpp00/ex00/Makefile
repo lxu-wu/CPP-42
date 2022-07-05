@@ -3,14 +3,14 @@ NAME = megaphone
 SRCS = megaphone.cpp
 OBJ = ${SRCS:.cpp=.o}
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 CC = g++
 
 all:	${NAME}
 
 $(NAME):	${OBJ}
-		${CC} ${CFLAGS} ${OBJ} -o ${NAME}
+		${CC} ${CXXFLAGS} ${OBJ} -o ${NAME}
 
 clean:
 		${RM} ${OBJ}

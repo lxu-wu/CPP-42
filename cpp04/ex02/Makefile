@@ -5,13 +5,13 @@ SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cp
 OBJ = ${SRCS:.cpp=.o}
 
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow -fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow -fsanitize=address -g
 CC = g++
 
 all:	${NAME}
 
 $(NAME):	${OBJ}
-		${CC} ${CFLAGS} ${OBJ} -o ${NAME}
+		${CC} ${CXXFLAGS} ${OBJ} -o ${NAME}
 
 clean:
 		${RM} ${OBJ}
