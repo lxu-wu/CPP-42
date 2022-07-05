@@ -1,7 +1,8 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# include "fstream"
+# include <iostream>
+# include <fstream>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;

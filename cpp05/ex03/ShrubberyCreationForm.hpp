@@ -2,6 +2,7 @@
 # define SHRUBBERYCREATIONFORM_CPP
 
 # include "Form.hpp"
+# include <iostream>
 
 class ShrubberyCreationForm : public Form
 {

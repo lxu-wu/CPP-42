@@ -8,13 +8,12 @@ FragTrap::FragTrap()
 	this->_attackDamage = 30;
 }
 
-FragTrap::FragTrap(std::string name)//: ClapTrap(name)
+FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
 	std::cout << "FragTrap name constructor called" << std::endl;
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
-	this->_name = name;
 }
 
 FragTrap::FragTrap(FragTrap const & rhs)
