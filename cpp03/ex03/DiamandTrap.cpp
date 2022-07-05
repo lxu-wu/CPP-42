@@ -12,6 +12,11 @@ DiamandTrap::DiamandTrap(std::string name)
 	this-> FragTrap::_hitPoints = 100;
 	this->ScavTrap::_energyPoints = 50;
 	this->FragTrap::_attackDamage = 30;
+
+
+	this->_hitPoints = FragTrap::_hitPoints;
+	this->_energyPoints = ScavTrap::_energyPoints;
+	this->_attackDamage = FragTrap::_attackDamage;
 }
 
 DiamandTrap::DiamandTrap(DiamandTrap const & rhs): ClapTrap(rhs), ScavTrap(rhs), FragTrap(rhs)
