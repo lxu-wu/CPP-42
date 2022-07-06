@@ -16,7 +16,7 @@ class Array
 		Array<T> & operator=(Array<T> const & src) {
 			this->_size = src._size;
 			this->_tab = new T[src._size];
-			for (int i = 0; i < src._size; i++)
+			for (unsigned int i = 0; i < src._size; i++)
 				this->_tab[i] = src._tab[i];
 			return *this;
 		}

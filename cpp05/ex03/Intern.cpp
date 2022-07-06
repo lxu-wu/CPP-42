@@ -23,7 +23,7 @@ Intern & Intern::operator=(Intern const & src)
 	return *this;
 }
 
-Form * Intern::makeForm(std::string name, std::string targte)
+Form * Intern::makeForm(std::string name, std::string target)
 {
 	std::string formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	int i = 0;
@@ -39,13 +39,13 @@ Form * Intern::makeForm(std::string name, std::string targte)
 	switch (i)
 	{
 	case 0:
-		tmp = new ShrubberyCreationForm();
+		tmp = new ShrubberyCreationForm(target);
 		break;
 	case 1:
-		tmp = new ShrubberyCreationForm();
+		tmp = new RobotomyRequestForm(target);
 		break;
 	case 2:
-		tmp = new ShrubberyCreationForm();
+		tmp = new PresidentialPardonForm(target);
 		break;
 	default:
 		throw UnexisteFormExection();

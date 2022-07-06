@@ -58,6 +58,7 @@ int main( void )
 		std::cout << "c = " << c << std::endl;
 		std::cout << "max = " <<Fixed::max(c, d) << std::endl;
 		std::cout << "min = " <<Fixed::min(c, d) << std::endl;
+
 	}
 	return 0;
 }

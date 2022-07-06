@@ -41,7 +41,7 @@ public:
 		public:
 			virtual const char * what() const throw()
 			{
-				return ("Grade lower than 15");
+				return ("Grade lower than 150");
 			}
 	};
 

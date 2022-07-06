@@ -118,7 +118,7 @@ bool Scalaire::_isDouble() const
 	return false;
 }
 
-int const Scalaire::getInt() const
+int Scalaire::getInt() const
 {
 	if (this->_type == 0)
 		throw Impossible();
@@ -141,7 +141,7 @@ int const Scalaire::getInt() const
 
 }
 
-char const Scalaire::getChar() const
+char Scalaire::getChar() const
 {
 	if (this->_type == 0)
 		throw Impossible();
@@ -175,7 +175,7 @@ char const Scalaire::getChar() const
 	}
 }
 
-float const Scalaire::getFloat() const
+float Scalaire::getFloat() const
 {
 	if (this->_type == 0)
 		throw Impossible();
@@ -189,7 +189,7 @@ float const Scalaire::getFloat() const
 		return static_cast<float>(this->_double);
 }
 
-double const Scalaire::getDouble() const
+double Scalaire::getDouble() const
 {
 	if (this->_type == 0)
 		throw Impossible();

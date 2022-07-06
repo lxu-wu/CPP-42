@@ -10,10 +10,10 @@ public:
 	Scalaire(std::string const & str);
 	~Scalaire();
 
-	int const getInt() const;
-	char const getChar() const;
-	float const getFloat() const;
-	double const getDouble() const;
+	int getInt() const;
+	char getChar() const;
+	float getFloat() const;
+	double getDouble() const;
 
 	class Impossible : public std::exception
 	{

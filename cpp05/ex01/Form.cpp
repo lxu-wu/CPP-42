@@ -5,12 +5,12 @@ Form::Form() : _name("TOP SECRET"), _signed(0), _signGrade(1), _execGrade(1)
 	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(Form const & src) : _name(src._name), _signed(src._signed), _execGrade(src._execGrade), _signGrade(src._signGrade)
+Form::Form(Form const & src) : _name(src._name), _signed(src._signed), _signGrade(src._signGrade), _execGrade(src._execGrade)
 {
 	std::cout << "Form copy constructor called" << std::endl;
 }
 
-Form::Form(std::string const name, int const signGrade, int const execGrade) : _name(name), _signGrade(signGrade), _execGrade(execGrade), _signed(0)
+Form::Form(std::string const name, int const signGrade, int const execGrade) : _name(name), _signed(0), _signGrade(signGrade), _execGrade(execGrade)
 {
 	std::cout << "Form assignation constructor called" << std::endl;
 	if (signGrade > 150 || execGrade > 150)
@@ -30,12 +30,12 @@ Form & Form::operator=(Form const & src)
 	return *this;
 }
 
-int const Form::getSignGrade() const
+int Form::getSignGrade() const
 {
 	return this->_signGrade;
 }
 
-int const Form::getExecGrade() const
+int Form::getExecGrade() const
 {
 	return this->_execGrade;
 }

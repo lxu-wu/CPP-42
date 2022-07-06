@@ -46,8 +46,6 @@ int main ()
 	Micheal.signForm(S_form);
 	Micheal.executeForm(P_form);
 	Micheal.executeForm(R_form);
-	Micheal.executeForm(R_form);
-	Micheal.executeForm(R_form);
 	Micheal.executeForm(S_form);
 	std::cout << std::endl;	
 }

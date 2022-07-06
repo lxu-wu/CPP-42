@@ -17,8 +17,8 @@ public:
 
 	Form & operator=(Form const & src);
 
-	int const getSignGrade() const;
-	int const getExecGrade() const;
+	int getSignGrade() const;
+	int getExecGrade() const;
 
 	std::string getName() const;
 

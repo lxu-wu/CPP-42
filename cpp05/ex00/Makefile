@@ -5,7 +5,7 @@ SRCS = main.cpp Bureaucrat.cpp
 OBJ = ${SRCS:.cpp=.o}
 
 RM = rm -rf
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow -fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 CC = g++
 
 all:	${NAME}
