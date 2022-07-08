@@ -1,4 +1,4 @@
-NAME = inter
+NAME = mutantstack
 
 SRCS = main.cpp
 

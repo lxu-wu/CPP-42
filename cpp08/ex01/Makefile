@@ -1,11 +1,11 @@
-NAME = easyfind
+NAME = span
 
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 OBJ = ${SRCS:.cpp=.o}
 
 RM = rm -rf
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow -fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 CC = g++
 
 all:	${NAME}

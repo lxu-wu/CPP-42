@@ -37,7 +37,7 @@ int main ()
 	std::cout << std::endl << " ---- Lvl Tests ---- " << std::endl;
 	try
 	{
-		P_form = Rayan.makeForm("Sheeeshhh", "Obama");
+		P_form = Rayan.makeForm("zzz", "Obama");
 	}
 	catch(const std::exception& e)
 	{
