@@ -1,10 +1,11 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() : _v(), _d() {}
+PmergeMe::PmergeMe() : _v(), _d(), _valid(false) {}
 
-PmergeMe::PmergeMe(char ** argv)
+PmergeMe::PmergeMe(char ** argv) : _v(), _d(), _valid(false)
 {
-	_parse(argv);
+	if (_parse(argv))
+		_valid = true;
 }
 
 PmergeMe::PmergeMe(PmergeMe const & src)
@@ -26,6 +27,8 @@ PmergeMe::~PmergeMe() {}
 
 void PmergeMe::sort()
 {
+	if (!_valid)
+		return;
 	std::vector<int> vect(_v);
 	std::deque<int> deck(_d);
 

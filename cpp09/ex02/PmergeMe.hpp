@@ -14,6 +14,7 @@ class PmergeMe {
 	private:
 		std::vector<int> _v;
 		std::deque<int> _d;
+		bool _valid;
 
 	public:
 
