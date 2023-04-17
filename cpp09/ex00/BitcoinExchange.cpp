@@ -150,9 +150,7 @@ double BitcoinExchange::_get_price(Date const &d) const
 
 	if (it == _data.end())
 	{
-		for (std::map<Date, double>::const_reverse_iterator it = _data.rbegin(); it != _data.rend(); ++it)
-			if (it->first < d)
-				return it->second;
+		return (--_data.lower_bound(d))->second;
 	}
 	return it->second;
 }
