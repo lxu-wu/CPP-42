@@ -136,12 +136,15 @@ bool BitcoinExchange::_is_number(std::string const &str) const
 {
 	std::string::const_iterator it = str.begin();
 	
-	while (it != str.end() && std::isdigit(*it))
-		++it;
-	if (it != str.end() && *it == '.')
-		++it;
-	while (it != str.end() && std::isdigit(*it))
-		++it;
+	if (std::isdigit(*str.begin()))
+	{
+		while (it != str.end() && std::isdigit(*it))
+			++it;
+		if (it != str.end() && *it == '.')
+			++it;
+		while (it != str.end() && std::isdigit(*it))
+			++it;
+	}
 	return (!str.empty() && it == str.end());
 }
 
