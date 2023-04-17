@@ -74,7 +74,7 @@ void BitcoinExchange::action(std::string const &file)
 		else if (qty > 1000)
 			std::cout << "Error: too large a number." << std::endl;
 		else
-			std::cout << d.str() << " => " << qty << " = " << (qty * _get_price(d)) << std::endl;
+			std::cout << d.str() << " => " << qty << " = " << std::fixed << std::setprecision(2) << (qty * _get_price(d)) << std::endl;
 			// std::cout << d.str() << " => " << qty << " = " << (qty * (_data.lower_bound(d))->second) << std::endl;
 	}
 
