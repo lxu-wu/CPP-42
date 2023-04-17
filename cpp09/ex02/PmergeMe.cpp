@@ -32,18 +32,18 @@ void PmergeMe::sort()
 	std::vector<int> vect(_v);
 	std::deque<int> deck(_d);
 
-	std::chrono::system_clock::time_point start, end;
+	struct timeval start, end;
+	long vdiff = 0, ddiff = 0;
 
-	start = std::chrono::system_clock::now();
+	gettimeofday(&start, NULL);
 	_merge_insert_sort(vect, 0, vect.size() - 1);
-    end = std::chrono::system_clock::now();
-    std::chrono::microseconds vdiff = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+	gettimeofday(&end, NULL);
+	vdiff = end.tv_usec - start.tv_usec;
 
-	start = std::chrono::system_clock::now();
+	gettimeofday(&start, NULL);
 	_merge_insert_sort(deck, 0, deck.size() - 1);
-    end = std::chrono::system_clock::now();
-    std::chrono::microseconds ddiff = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-
+	gettimeofday(&end, NULL);
+	ddiff = end.tv_usec - start.tv_usec;
 
 	std::cout << "Before:	";
 	for (size_t i = 0; i < _v.size(); i++)
@@ -55,8 +55,8 @@ void PmergeMe::sort()
 		std::cout << vect[i] << " ";
 	std::cout << std::endl;
 
-	std::cout << "Time to process a range of " << vect.size() << " elements with std::vector : " << vdiff.count() << " us" << std::endl;
-	std::cout << "Time to process a range of " << deck.size() << " elements with std::deque : " << ddiff.count() << " us" << std::endl;
+	std::cout << "Time to process a range of " << vect.size() << " elements with std::vector : " << vdiff << " us" << std::endl;
+	std::cout << "Time to process a range of " << deck.size() << " elements with std::deque : " << ddiff << " us" << std::endl;
 
 }
 
