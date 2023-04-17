@@ -45,7 +45,7 @@ void BitcoinExchange::action(std::string const &file)
 	std::stringstream vss(value);
 	dss >> date;
 	vss >> value;
-	if (!ss.eof() || date != "date" || value != "value")
+	if (!ss.eof() || date != "date" || value != "value"|| !_one_token(dss.str()) || !_one_token(vss.str()))
 	{
 		std::cerr << "Invalid input file" << std::endl;
 		return;
