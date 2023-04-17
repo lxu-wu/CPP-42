@@ -65,7 +65,7 @@ bool RPN::_operation(char operation)
 		std::cout << "Can't do operation on 1 number" << std::endl;
 		return false;
 	}
-	double num1, num2;
+	long num1, num2, result;
 	num2 = _stack.top();
 	_stack.pop();
 	num1 = _stack.top();
@@ -74,13 +74,13 @@ bool RPN::_operation(char operation)
 	switch (operation)
 	{
 		case '+':
-			_stack.push(num1 + num2);
+			result = num1 + num2;
 			break;
 		case '-':
-			_stack.push(num1 - num2);
+			result = num1 - num2;
 			break;
 		case '*':
-			_stack.push(num1 * num2);
+			result = num1 * num2;
 			break;
 		case '/':
 			if (num2 == 0)
@@ -88,8 +88,14 @@ bool RPN::_operation(char operation)
 				std::cout << "Can't divide by 0" << std::endl;
 				return false;
 			}
-			_stack.push(num1 / num2);
+			result = num1 / num2;
 			break;
 	}
+	if (result > INT_MAX || result < INT_MIN)
+	{
+		std::cout << "Result is too big or too small" << std::endl;
+		return false;
+	}
+	_stack.push(result);
 	return true;
 }

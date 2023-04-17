@@ -9,7 +9,7 @@ class RPN {
 
 	private:
 
-		std::stack<int> _stack;
+		std::stack<long> _stack;
 		std::stringstream _input;
 		bool _valid;
 
