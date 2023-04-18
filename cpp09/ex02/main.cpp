@@ -7,8 +7,15 @@ int main(int argc, char ** argv)
 		std::cout << "No arguments" << std::endl;
 		return 1;
 	}
-	PmergeMe me(argv);
-	me.sort();
+	try
+	{
+		PmergeMe me(argv);
+		me.sort();
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "Int overflow" << std::endl;
+	}
 	
 }
 
@@ -23,7 +30,7 @@ int main(int argc, char ** argv)
 
 //     std::chrono::system_clock::time_point end = std::chrono::system_clock::now(); // Temps de fin
 
-//     std::chrono::nanoseconds elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start); // Calcul de la durée écoulée en ns
+//     std::chrono::nanoseconds elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start); // Calcul` de la durée écoulée en ns
 //     std::cout << "Temps écoulé : " << elapsed_ns.count() << " ns" << std::endl;
 
 //     return 0;

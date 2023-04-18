@@ -8,8 +8,11 @@ RPN::RPN(char *input) : _valid(false) {
 
 	while (!_input.eof())
 	{
+		
 		_input >> token;
-		if (token.size() != 1 || (!_isOperator(token[0]) && !std::isdigit(token[0])))
+		if (token.empty())
+			break;
+		else if (token.size() != 1 || (!_isOperator(token[0]) && !std::isdigit(token[0])))
 		{
 			std::cout << "Invalid input" << std::endl;
 			return ;
@@ -97,5 +100,15 @@ bool RPN::_operation(char operation)
 		return false;
 	}
 	_stack.push(result);
+	return true;
+}
+
+bool RPN::_isSpace(std::string str)
+{
+	for(std::string::iterator it = str.begin(); it != str.end(); ++it)
+	{
+		if (!std::isspace(*it))
+			return false;
+	}
 	return true;
 }

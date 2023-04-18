@@ -61,13 +61,12 @@ void BitcoinExchange::action(std::string const &file)
 		dss >> date;
 		vss >> value;
 		BitcoinExchange::Date d(date);
-		qty = stod(value);
+		try {
+			qty = stod(value);
 		if (!ss.eof() || !_one_token(dss.str()) || !_one_token(vss.str()))
 			std::cout << "Error: line." << std::endl;
 		else if (!d.valid())
 			std::cout << "Error: bad input => " << d.str() << std::endl;
-		else if (!_is_number(value))
-			std::cout << "Error: number error." << std::endl;
 		else if (qty < 0)
 			std::cout << "Error: not a positive number." << std::endl;
 		else if (qty > 1000)
@@ -75,6 +74,10 @@ void BitcoinExchange::action(std::string const &file)
 		else
 			std::cout << d.str() << " => " << qty << " = " << (qty * _get_price(d)) << std::endl;
 			// std::cout << d.str() << " => " << qty << " = " << (qty * (_data.lower_bound(d))->second) << std::endl;
+		}
+		catch (std::exception &e) {
+			std::cout << "Error: line." << std::endl;
+		}
 	}
 
 }
@@ -174,7 +177,7 @@ bool BitcoinExchange::_one_token(std::string const &str) const
 	return (!str.empty() && it == str.end());
 }
 
-BitcoinExchange::Date::Date() : _year(2009), _month(1), _day(2), _valid(true), _str("2009-01-02") {}
+BitcoinExchange::Date::Date() : _year(2009), _month(1), _day(2), _valid(true), _str("0000-01-00") {}
 
 BitcoinExchange::Date::Date(std::string const &str)
 {
@@ -269,7 +272,7 @@ bool BitcoinExchange::Date::_valid_date_str(std::string const &str)
 
 bool BitcoinExchange::Date::_valid_date()
 {
-	if (_year < 2009 || _month < 1 || _month > 12 || _day < 1 || _day > 31)
+	if (_month < 1 || _month > 12 || _day < 1 || _day > 31)
 		return false;
 	if (_month == 2)
 	{
