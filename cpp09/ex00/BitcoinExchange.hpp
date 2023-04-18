@@ -6,7 +6,6 @@
 # include <sstream>
 # include <ostream>
 # include <fstream>
-# include "Date.hpp"
 
 class BitcoinExchange {
 

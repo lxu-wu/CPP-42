@@ -1,6 +1,6 @@
 NAME = btc
 
-SRCS = main.cpp Date.cpp BitcoinExchange.cpp
+SRCS = main.cpp BitcoinExchange.cpp
 
 OBJ = ${SRCS:.cpp=.o}
 

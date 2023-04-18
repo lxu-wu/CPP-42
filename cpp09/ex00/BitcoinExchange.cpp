@@ -154,7 +154,9 @@ double BitcoinExchange::_get_price(BitcoinExchange::Date const &d) const
 
 	if (it == _data.end())
 	{
-		return (--_data.lower_bound(d))->second;
+		it = _data.upper_bound(d);
+		if (it != _data.begin())
+			--it;
 	}
 	return it->second;
 }

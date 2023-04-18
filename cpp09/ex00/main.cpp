@@ -1,10 +1,7 @@
 #include "BitcoinExchange.hpp"
 #include <iostream>
 #include <sstream>
-#include <ostream>
 #include <fstream>
-#include "Date.hpp"
-#include <stdio.h>
 
 
 // std::fixed << std::setprecision(2)
