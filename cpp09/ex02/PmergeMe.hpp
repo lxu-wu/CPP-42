@@ -29,7 +29,8 @@ class PmergeMe {
 	private:
 
 		bool _parse(char ** argv);
-		bool _isNumber(std::string str);
+		// bool _isNumber(std::string str);
+		long _atoi(std::string const &str) const;
 		
 		template <typename T>
 		void _merge(T &arr, size_t start, size_t middle, size_t end)

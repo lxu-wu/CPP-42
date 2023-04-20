@@ -62,20 +62,20 @@ void PmergeMe::sort()
 
 bool PmergeMe::_parse(char ** argv)
 {
+	long val;
+
 	for (size_t i = 1; argv[i]; i++)
 	{
 		if (!std::string(argv[i]).empty())
 		{
-			if (_isNumber(argv[i]))
-			{
-				_v.push_back(std::stoi(argv[i]));
-				_d.push_back(std::stoi(argv[i]));
-			}
-			else
+			val = _atoi(argv[i]);
+			if (val > INT_MAX)
 			{
 				std::cout << "Error : argument format" << std::endl;
 				return false;
 			}
+			_v.push_back(_atoi(argv[i]));
+			_d.push_back(_atoi(argv[i]));
 		}
 	}
 	if (_v.empty() || _d.empty())
@@ -86,12 +86,21 @@ bool PmergeMe::_parse(char ** argv)
 	return true;
 }
 
-bool PmergeMe::_isNumber(std::string str)
+// bool PmergeMe::_isNumber(std::string str)
+// {
+// 	for (size_t i = 0; i < str.length(); i++)
+// 	{
+// 		if (!isdigit(str[i]))
+// 			return false;
+// 	}
+// 	return true;
+// }
+
+long PmergeMe::_atoi(std::string const &str) const
 {
-	for (size_t i = 0; i < str.length(); i++)
-	{
-		if (!isdigit(str[i]))
-			return false;
-	}
-	return true;
+    char *end;
+    long l = std::strtol(str.c_str(), &end, 10);
+    if (*end)
+		return LONG_MAX;
+	return l;
 }

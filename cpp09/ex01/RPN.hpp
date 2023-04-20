@@ -27,7 +27,6 @@ class RPN {
 
 		bool _isOperator(char c) const;
 		bool _operation(char c);
-		bool _isSpace(std::string str);
 
 
 };

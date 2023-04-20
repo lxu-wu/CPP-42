@@ -61,9 +61,11 @@ void BitcoinExchange::action(std::string const &file)
 		dss >> date;
 		vss >> value;
 		BitcoinExchange::Date d(date);
-		try {
-			qty = stod(value);
-		if (!ss.eof() || !_one_token(dss.str()) || !_one_token(vss.str()))
+		
+		qty = _atof(value.c_str());
+		// if (date.empty() || value.empty())
+		// 	std::cout << ""
+		if (!ss.eof() || !_one_token(dss.str()) || !_one_token(vss.str()) || qty == INFINITY)
 			std::cout << "Error: line." << std::endl;
 		else if (!d.valid())
 			std::cout << "Error: bad input => " << d.str() << std::endl;
@@ -72,12 +74,14 @@ void BitcoinExchange::action(std::string const &file)
 		else if (qty > 1000)
 			std::cout << "Error: too large a number." << std::endl;
 		else
-			std::cout << d.str() << " => " << qty << " = " << (qty * _get_price(d)) << std::endl;
-			// std::cout << d.str() << " => " << qty << " = " << (qty * (_data.lower_bound(d))->second) << std::endl;
+		{
+			if (d < _data.begin()->first)
+				std::cout << "Error: too early." << std::endl;
+			else
+				std::cout << d.str() << " => " << qty << " = " << (qty * _get_price(d)) << std::endl;
 		}
-		catch (std::exception &e) {
-			std::cout << "Error: line." << std::endl;
-		}
+		date.clear();
+		value.clear();
 	}
 
 }
@@ -89,7 +93,8 @@ bool BitcoinExchange::_data_extract(std::string const &file)
 	std::string line;
 	std::string date;
 	std::string value;
-	
+	double tmp;
+
 	if (!f.is_open())
 	{
 		std::cerr << "Error opening file" << std::endl;
@@ -105,7 +110,7 @@ bool BitcoinExchange::_data_extract(std::string const &file)
 	std::stringstream vss(value);
 	dss >> date;
 	vss >> value;
-	if (date != "date" || value != "exchange_rate")
+	if (date != "date" || value != "exchange_rate" || !_one_token(dss.str()) || !_one_token(vss.str()))
 	{
 		std::cerr << "Invalid data" << std::endl;
 		return false;
@@ -124,31 +129,29 @@ bool BitcoinExchange::_data_extract(std::string const &file)
 		dss >> date;
 		vss >> value;
 		BitcoinExchange::Date d(date);
-		if (ss.eof() && d.valid() && _is_number(value))
-			_data[d] = std::stod(value);
-		else
+		if (!ss.eof() || !d.valid() || !_one_token(dss.str()) || !_one_token(vss.str()))
 		{
+		
 			std::cerr << "Invalid data" << std::endl;
 			return false;
 		}
+		tmp = _atof(value.c_str());
+		if (tmp == INFINITY || tmp < 0)
+			return false;
+		_data[d] = tmp;
+		date.clear();
+		value.clear();
 	}
 	return true;
 }
 
-bool BitcoinExchange::_is_number(std::string const &str) const
+double BitcoinExchange::_atof(std::string const &str) const
 {
-	std::string::const_iterator it = str.begin();
-	
-	if (std::isdigit(*str.begin()))
-	{
-		while (it != str.end() && std::isdigit(*it))
-			++it;
-		if (it != str.end() && *it == '.')
-			++it;
-		while (it != str.end() && std::isdigit(*it))
-			++it;
-	}
-	return (!str.empty() && it == str.end());
+    char *end;
+    double d = std::strtod(str.c_str(), &end);
+    if (*end)
+		return INFINITY;
+	return d;
 }
 
 double BitcoinExchange::_get_price(BitcoinExchange::Date const &d) const
@@ -184,9 +187,9 @@ BitcoinExchange::Date::Date(std::string const &str)
 	_str = str;
 	if (_valid_date_str(str))
 	{
-		_year = std::stoi(str.substr(0, 4));
-		_month = std::stoi(str.substr(5, 2));
-		_day = std::stoi(str.substr(8, 2));
+		_year = atoi(str.substr(0, 4).c_str());
+		_month = atoi(str.substr(5, 2).c_str());
+		_day = atoi(str.substr(8, 2).c_str());
 		if (_valid_date())
 			_valid = true;
 		else

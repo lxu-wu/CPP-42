@@ -6,6 +6,7 @@
 # include <sstream>
 # include <ostream>
 # include <fstream>
+# include <cmath>
 
 class BitcoinExchange {
 
@@ -61,7 +62,7 @@ class BitcoinExchange {
 	private:
 
 		bool _data_extract(std::string const &file);
-		bool _is_number(std::string const &str) const;
+		double _atof(std::string const &str) const;
 		double _get_price(Date const &d) const;
 		bool _one_token(std::string const &str) const;
 };

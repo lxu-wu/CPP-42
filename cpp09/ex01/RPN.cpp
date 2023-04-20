@@ -19,7 +19,7 @@ RPN::RPN(char *input) : _valid(false) {
 		}
 		else if (std::isdigit(token[0]))
 		{
-			_stack.push(std::stoi(token));
+			_stack.push(atoi(token.c_str()));
 		}
 		else
 		{
@@ -100,15 +100,5 @@ bool RPN::_operation(char operation)
 		return false;
 	}
 	_stack.push(result);
-	return true;
-}
-
-bool RPN::_isSpace(std::string str)
-{
-	for(std::string::iterator it = str.begin(); it != str.end(); ++it)
-	{
-		if (!std::isspace(*it))
-			return false;
-	}
 	return true;
 }
