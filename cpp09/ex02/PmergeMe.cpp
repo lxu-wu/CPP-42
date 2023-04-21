@@ -69,13 +69,13 @@ bool PmergeMe::_parse(char ** argv)
 		if (!std::string(argv[i]).empty())
 		{
 			val = _atoi(argv[i]);
-			if (val > INT_MAX)
+			if (val < 0 || val > INT_MAX)
 			{
 				std::cout << "Error : argument format" << std::endl;
 				return false;
 			}
-			_v.push_back(_atoi(argv[i]));
-			_d.push_back(_atoi(argv[i]));
+			_v.push_back(val);
+			_d.push_back(val);
 		}
 	}
 	if (_v.empty() || _d.empty())
